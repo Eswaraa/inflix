@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"log"
 	"net/http"
 
 	"github.com/Eswaraa/inflix/model"
@@ -22,7 +23,16 @@ func GetAlbums(c *gin.Context) {
 //CreateAlbum - Create an album
 func CreateAlbum(c *gin.Context) {
 	var album model.Album
-	c.BindJSON(&album)
+	if c.BindJSON(&album) == nil {
+		log.Println(album.Title)
+		log.Println(album.Release)
+		log.Println(album.Production)
+		log.Println(album.Director)
+		log.Println(album.IsPremium)
+	} else {
+		log.Println("Error in binding")
+	}
+
 	err := service.CreateAlbum(&album)
 	if err != nil {
 		c.AbortWithStatus(http.StatusNotFound)

@@ -2,6 +2,7 @@ package service
 
 import (
 	"fmt"
+	"log"
 
 	"github.com/Eswaraa/inflix/config"
 	"github.com/Eswaraa/inflix/model"
@@ -18,6 +19,7 @@ func GetAllAlbums(album *[]model.Album) (err error) {
 
 //CreateAlbum - creates an album
 func CreateAlbum(album *model.Album) (err error) {
+	log.Println("Album Input:", album)
 	if err = config.DB.Create(album).Error; err != nil {
 		return err
 	}
