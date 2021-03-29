@@ -1,8 +1,6 @@
 package rest
 
 import (
-	"net/http"
-
 	"github.com/Eswaraa/inflix/controller"
 	"github.com/gin-gonic/gin"
 )
@@ -36,17 +34,6 @@ func SetupRouter() *gin.Engine {
 		v1.PUT("album/:id", controller.UpdateAlbum)
 		v1.DELETE("album/:id", controller.DeleteAlbum)
 	}
-	v0 := r.Group("/v0")
-	{
-		v0.GET("/someJSON", func(c *gin.Context) {
-			data := map[string]interface{}{
-				"lang": "GO语言",
-				"tag":  "<br>",
-			}
 
-			// will output : {"lang":"GO\u8bed\u8a00","tag":"\u003cbr\u003e"}
-			c.AsciiJSON(http.StatusOK, data)
-		})
-	}
 	return r
 }
