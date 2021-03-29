@@ -1,19 +1,18 @@
 package model
 
 import (
-	"time"
-
+	"github.com/Eswaraa/inflix/util"
 	"gorm.io/gorm"
 )
 
 // Album - represent a movie album in Inflix store
 type Album struct {
 	gorm.Model
-	Title      string    `json:"title"`
-	Release    time.Time `json:"release"`
-	Production string    `json:"production"`
-	Director   string    `json:"director"`
-	IsPremium  bool      `json:"is_premium"`
+	Title      string          `json:"title"`
+	Release    util.SimpleDate `json:"release"`
+	Production string          `json:"production"`
+	Director   string          `json:"director"`
+	IsPremium  bool            `json:"is_premium"`
 }
 
 //TableName - to reriteve the db table name

@@ -17,12 +17,14 @@ func GetAlbums(c *gin.Context) {
 		c.AbortWithStatus(http.StatusNotFound)
 	} else {
 		c.JSON(http.StatusOK, albums)
+		log.Printf("Albums List: %v", albums)
 	}
 }
 
 //CreateAlbum - Create an album
 func CreateAlbum(c *gin.Context) {
 	var album model.Album
+	// var mapAlbum map[string]interface{}
 	if c.BindJSON(&album) == nil {
 		log.Println(album.Title)
 		log.Println(album.Release)
